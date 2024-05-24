@@ -22,12 +22,10 @@ namespace Праткическая_49_Тепляков.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<Versions>), 200)]
         [ProducesResponseType(400)]
-        public ActionResult List([FromForm] string Token)
+        public ActionResult List()
         {
             try
             {
-                var User = new UsersContext();
-                if (User.Users.FirstOrDefault(x => x.Token == Token) == null) return StatusCode(400);
                 IEnumerable<Versions> Versions = new VersionsContext().Versions;
                 return Json(Versions);
             }
