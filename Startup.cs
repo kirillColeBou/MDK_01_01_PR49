@@ -22,36 +22,30 @@ namespace Праткическая_49_Тепляков
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Регистрация",
-                    Description = "Регистрация пользователя"
+                    Title = "Авторизация и регистрация",
+                    Description = "Авторизация и регистрация пользователей"
                 });
                 c.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v2",
-                    Title = "Авторизация",
-                    Description = "Авторизация пользователей"
+                    Title = "Получение списка версий",
+                    Description = "Получение всего списка версий"
                 });
                 c.SwaggerDoc("v3", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v3",
-                    Title = "Получение списка версий",
-                    Description = "Получение всего списка версий"
+                    Title = "Получение списка блюд",
+                    Description = "Получение всех блюд из базы"
                 });
                 c.SwaggerDoc("v4", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v4",
-                    Title = "Получение списка блюд",
-                    Description = "Получение всех блюд из базы"
+                    Title = "Отправка заказа",
+                    Description = "Отправка заказов"
                 });
                 c.SwaggerDoc("v5", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v5",
-                    Title = "Отправка заказа",
-                    Description = "Отправка заказов"
-                });
-                c.SwaggerDoc("v6", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Version = "v6",
                     Title = "Получение истории",
                     Description = "Получение списка истории всех заказов"
                 });
@@ -67,12 +61,11 @@ namespace Праткическая_49_Тепляков
             app.UseMvcWithDefaultRoute();
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Регистрация");
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Авторизация");
-                c.SwaggerEndpoint("/swagger/v3/swagger.json", "Получение списка версий");
-                c.SwaggerEndpoint("/swagger/v4/swagger.json", "Получение списка блюд");
-                c.SwaggerEndpoint("/swagger/v5/swagger.json", "Отправка заказа");
-                c.SwaggerEndpoint("/swagger/v6/swagger.json", "Получение истории");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Авторизация");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Получение списка версий");
+                c.SwaggerEndpoint("/swagger/v3/swagger.json", "Получение списка блюд");
+                c.SwaggerEndpoint("/swagger/v4/swagger.json", "Отправка заказа");
+                c.SwaggerEndpoint("/swagger/v5/swagger.json", "Получение истории");
             });
         }
     }
