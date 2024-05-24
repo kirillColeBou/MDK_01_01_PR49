@@ -17,6 +17,7 @@ namespace Праткическая_49_Тепляков.Controllers
         /// </summary>
         /// <param name="Email">Логин</param>
         /// <param name="Password">Пароль</param>
+        /// <param name="Token">Токен пользователя</param>
         /// <returns>Данный метод преднозначен для авторизации пользователя на сайте</returns>
         /// <response code="200">Пользователь успешно авторизован</response>
         /// <response code="400">Проблема аутентификации</response>
@@ -26,12 +27,12 @@ namespace Праткическая_49_Тепляков.Controllers
         [ProducesResponseType(typeof(Users), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public ActionResult SingIn([FromForm] string Email, [FromForm] string Password)
+        public ActionResult SingIn([FromForm] string Email, [FromForm] string Password, [FromForm] string Token)
         {
-            if (Email == null || Password == null) return StatusCode(400);
+            if (Email == null || Password == null || Token == null) return StatusCode(400);
             try
             {
-                Users User = new UsersContext().Users.First(x => x.Email == Email && x.Password == Password);
+                Users User = new UsersContext().Users.First(x => x.Email == Email && x.Password == Password && x.Token == Token);
                 return Json(User.Token);
             }
             catch
@@ -42,8 +43,10 @@ namespace Праткическая_49_Тепляков.Controllers
         /// <summary>
         /// Регистрация нового пользователя
         /// </summary>
+        /// <param name="Email">Почта</param>
         /// <param name="Login">Логин</param>
         /// <param name="Password">Пароль</param>
+        /// <param name="Token">Токен уже зарегистрированного пользователя</param>
         /// <returns>Данный метод предназначен для регистрации пользователя на сайте</returns>
         /// <response code="200">Успешная регистрация</response>
         /// <response code="400">Проблемы при регистрации</response>
@@ -63,6 +66,7 @@ namespace Праткическая_49_Тепляков.Controllers
                 {
                     Users User = new Users()
                     {
+                        Email = Email,
                         Login = Login,
                         Password = Password,
                         Token = GenerateToken()
