@@ -13,10 +13,10 @@ namespace Праткическая_49_Тепляков.Controllers
     public class DishesController : Controller
     {
         /// <summary>
-        /// Получение списка версий
+        /// Получение списка блюд
         /// </summary>
         /// <param name="Version">Версия блюда</param>
-        /// <remarks>Данный метод получает список версий, находящийся в базе данных</remarks>
+        /// <remarks>Данный метод получает список блюд, находящийся в базе данных</remarks>
         /// <response code="200">Список успешно получен</response>
         /// <response code="400">Проблемы при запросе</response>
         [Route("List")]

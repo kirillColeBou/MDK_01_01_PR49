@@ -22,32 +22,26 @@ namespace Праткическая_49_Тепляков
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Авторизация и регистрация",
+                    Title = "Авторизация",
                     Description = "Авторизация и регистрация пользователей"
                 });
                 c.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v2",
-                    Title = "Получение списка версий",
-                    Description = "Получение всего списка версий"
+                    Title = "Версии",
+                    Description = "Получение списка версий"
                 });
                 c.SwaggerDoc("v3", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v3",
-                    Title = "Получение списка блюд",
-                    Description = "Получение всех блюд из базы"
+                    Title = "Блюда",
+                    Description = "Получение блюд из базы"
                 });
                 c.SwaggerDoc("v4", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v4",
-                    Title = "Отправка заказа",
-                    Description = "Отправка заказов"
-                });
-                c.SwaggerDoc("v5", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Version = "v5",
-                    Title = "Получение истории",
-                    Description = "Получение списка истории всех заказов"
+                    Title = "Заказы",
+                    Description = "Отправка заказов и получение истории заказов"
                 });
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "Практическая_49_Тепляков.xml");
                 c.IncludeXmlComments(filePath);
@@ -62,10 +56,9 @@ namespace Праткическая_49_Тепляков
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Авторизация");
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Получение списка версий");
-                c.SwaggerEndpoint("/swagger/v3/swagger.json", "Получение списка блюд");
-                c.SwaggerEndpoint("/swagger/v4/swagger.json", "Отправка заказа");
-                c.SwaggerEndpoint("/swagger/v5/swagger.json", "Получение истории");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Версии");
+                c.SwaggerEndpoint("/swagger/v3/swagger.json", "Блюда");
+                c.SwaggerEndpoint("/swagger/v4/swagger.json", "Заказы");
             });
         }
     }
