@@ -5,6 +5,11 @@
     <RootNamespace>Праткическая_49_Тепляков</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>obj\Debug\netcoreapp3.1\</OutputPath>
+    <DocumentationFile>obj\Debug\netcoreapp3.1\Праткическая 49_Тепляков.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="Controllers\" />

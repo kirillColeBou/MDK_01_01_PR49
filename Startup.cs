@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,43 +14,65 @@ namespace Праткическая_49_Тепляков
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Регистрация",
+                    Description = "Регистрация пользователя"
+                });
+                c.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v2",
+                    Title = "Авторизация",
+                    Description = "Авторизация пользователей"
+                });
+                c.SwaggerDoc("v3", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v3",
+                    Title = "Получение списка версий",
+                    Description = "Получение всего списка версий"
+                });
+                c.SwaggerDoc("v4", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v4",
+                    Title = "Получение списка блюд",
+                    Description = "Получение всех блюд из базы"
+                });
+                c.SwaggerDoc("v5", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v5",
+                    Title = "Отправка заказа",
+                    Description = "Отправка заказов"
+                });
+                c.SwaggerDoc("v6", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v6",
+                    Title = "Получение истории",
+                    Description = "Получение списка истории всех заказов"
+                });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Практическая_49_Тепляков.xml");
+                c.IncludeXmlComments(filePath);
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+            app.UseMvcWithDefaultRoute();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Регистрация");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Авторизация");
+                c.SwaggerEndpoint("/swagger/v3/swagger.json", "Получение списка версий");
+                c.SwaggerEndpoint("/swagger/v4/swagger.json", "Получение списка блюд");
+                c.SwaggerEndpoint("/swagger/v5/swagger.json", "Отправка заказа");
+                c.SwaggerEndpoint("/swagger/v6/swagger.json", "Получение истории");
             });
         }
     }
