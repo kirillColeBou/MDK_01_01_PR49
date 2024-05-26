@@ -43,8 +43,8 @@ namespace Праткическая_49_Тепляков
                     Title = "Заказы",
                     Description = "Отправка заказов и получение истории заказов"
                 });
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Практическая_49_Тепляков.xml");
-                c.IncludeXmlComments(filePath);
+                //var filePath = Path.Combine(System.AppContext.BaseDirectory, "Практическая_49_Тепляков.xml");
+                //c.IncludeXmlComments(filePath);
             });
         }
 

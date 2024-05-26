@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Праткическая_49_Тепляков</RootNamespace>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>obj\Debug\netcoreapp3.1\</OutputPath>
-    <DocumentationFile>obj\Debug\netcoreapp3.1\Праткическая 49_Тепляков.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\kiril\Desktop\ПР49\ПР49\Праткическая 49_Тепляков\obj\Debug\netcoreapp3.1\netcoreapp3.1\Праткическая 49_Тепляков.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

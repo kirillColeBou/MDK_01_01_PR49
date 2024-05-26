@@ -75,7 +75,6 @@ namespace Праткическая_49_Тепляков.Controllers
                     newUser.SaveChanges();
                     return Json(newUser);
                 }
-
             }
             catch (Exception ex)
             {

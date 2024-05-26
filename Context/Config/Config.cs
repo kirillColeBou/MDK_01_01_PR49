@@ -8,7 +8,7 @@ namespace Праткическая_49_Тепляков.Context.Config
 {
     public class Config
     {
-        public static readonly string StrConnect = "server=127.0.0.1;port=3303;uid=root;database=TaskManager";
+        public static readonly string StrConnect = "server=localhost;uid=root;database=pr49";
         public static MySqlServerVersion mySqlServerVersion = new MySqlServerVersion(new System.Version(8, 0, 11));
     }
 }

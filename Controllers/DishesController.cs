@@ -23,11 +23,11 @@ namespace Праткическая_49_Тепляков.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<Dishes>), 200)]
         [ProducesResponseType(400)]
-        public ActionResult List([FromForm] int Version)
+        public ActionResult List([FromQuery] int Version)
         {
             try
             {
-                IEnumerable<Dishes> Dishes = new DishesContext().Dishes.OrderBy(x => x.Version == Version);
+                IEnumerable<Dishes> Dishes = new DishesContext().Dishes.Where(x => x.Version == Version);
                 return Json(Dishes);
             }
             catch
