@@ -32,7 +32,7 @@ namespace Праткическая_49_Тепляков.Controllers
         [ProducesResponseType(401)]
         public ActionResult AddOrder([FromForm] string Address, [FromForm] DateTime Date, [FromForm] int DishId, [FromForm] int Count, [FromForm] string Token)
         {
-            if (Address == null && Date == null && DishId == 0 && Count == 0 && Token == null) return StatusCode(400);
+            if (Address == null || Date == null || DishId == 0 || Count == 0 || Token == null) return StatusCode(400);
             try
             {
                 var newOrder = new OrderContext();
